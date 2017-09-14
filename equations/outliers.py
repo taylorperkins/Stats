@@ -9,7 +9,7 @@ from iqr import IQR
 class Outliers(object):
 
     @staticmethod
-    def get_outliers(st_list, iqr, box_plot):
+    def create_outliers(st_list, iqr, box_plot):
         q1 = box_plot.get('first_half_median')
         q3 = box_plot.get('second_half_median')
 
@@ -27,7 +27,7 @@ class Outliers(object):
         return outliers
 
     @staticmethod
-    def create_outliers(st_list):
+    def get_outliers(st_list):
         box_plot = BoxPlot.get_box_plot(st_list)
 
         iqr = IQR.get_iqr(box_plot)
@@ -38,7 +38,7 @@ class Outliers(object):
         start = st_list[0]
         end = st_list[-1]
 
-        outliers = Outliers.get_outliers(st_list, iqr, box_plot)
+        outliers = Outliers.create_outliers(st_list, iqr, box_plot)
 
         return outliers
 

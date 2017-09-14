@@ -9,17 +9,17 @@ from median import Median
 class IQR(object):
 
     @staticmethod
-    def get_iqr(box_plot):
+    def create_iqr(box_plot):
         first_half_median = box_plot.get('first_half_median')
         second_half_median = box_plot.get('second_half_median')
 
         return second_half_median - first_half_median
 
     @staticmethod
-    def create_iqr(st_list):
+    def get_iqr(st_list):
         box_plot = BoxPlot.get_box_plot(st_list)
 
-        iqr = IQR.get_iqr(box_plot)
+        iqr = IQR.create_iqr(box_plot)
 
         return iqr
 

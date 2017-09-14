@@ -25,7 +25,7 @@ class Controller(object):
             result = BoxPlot.get_box_plot(st_list)
 
         elif equation == 'iqr':
-            result = IQR.create_iqr(st_list)
+            result = IQR.get_iqr(st_list)
 
         elif equation =='mean':
             result = Mean.get_mean(st_list)
@@ -34,7 +34,7 @@ class Controller(object):
             result = Median.get_median(st_list)
 
         elif equation == 'outliers':
-            result = Outliers.create_outliers(st_list)
+            result = Outliers.get_outliers(st_list)
 
         elif equation == 'standard_deviation':
             result = StandardDeviation.get_standard_deviation(st_list, sample)
