@@ -8,7 +8,7 @@ from median import Median
 class BoxPlot(object):
 
     @staticmethod
-    def get_box_plot(st_list):
+    def get_box_plot(st_list, print_results=False):
         median = Median.get_median(st_list)
 
         middle_indices = Median.get_middle_indices(st_list)
@@ -25,8 +25,10 @@ class BoxPlot(object):
             'start': st_list[0],
             'end': st_list[-1]
         }
+        if print_results:
+            return BoxPlot.print_results(box_plot)
 
-        return BoxPlot.print_results(box_plot)
+        return box_plot
 
     @staticmethod
     def get_halves(middle_indices, st_list):
@@ -44,14 +46,12 @@ class BoxPlot(object):
     def print_results(box_plot):
         result_string = str()
 
-        result_string += """Now finding sides in {}..\nHere is your list: \n\t{}
-        \nHere is your median: \t\t\t\t{}
+        result_string += """Here is your median: \t\t\t\t{}
         \rHere is your first half median: \t{}
         \rHere is your second half median: \t{}
         \rHere is your start: \t\t\t\t{}
         \rHere is your end: \t\t\t\t\t{}
         """.format(
-            file_name, st_list,
             box_plot.get('median'),
             box_plot.get('first_half_median'),
             box_plot.get('second_half_median'),
@@ -66,6 +66,6 @@ if __name__ == '__main__':
     file_name = sys.argv[0]
     st_list = NUM_LIST
 
-    box_plot = BoxPlot.get_box_plot(st_list=st_list)
+    box_plot = BoxPlot.get_box_plot(st_list=st_list, print_results=True)
 
     print(box_plot)
