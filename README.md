@@ -1,0 +1,2 @@
+# Stats
+Khanacademy Statistic Methods
