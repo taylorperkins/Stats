@@ -9,7 +9,7 @@ from utils import to_bool
 class Variance(object):
 
     @staticmethod
-    def get_variance(st_list, sample=False):
+    def get_variance(st_list, sample=False, print_results=False):
         st_mean = Mean.get_mean(st_list)
 
         squares_list = list()
@@ -17,9 +17,23 @@ class Variance(object):
             squares_list.append((num - st_mean)**2)
 
         if not to_bool(sample):
-            return sum(squares_list) / len(st_list)
+            variance = sum(squares_list) / len(st_list)
 
-        return sum(squares_list) / (len(st_list) - 1)
+        else:
+            variance = sum(squares_list) / (len(st_list) - 1)
+
+        if print_results:
+            return Variance.print_results(variance)
+
+        return variance
+
+    @staticmethod
+    def print_results(variance):
+        result_string = str()
+
+        result_string += "Here is your variance: {}".format(variance)
+
+        return result_string
 
 
 if __name__ == '__main__':
@@ -27,6 +41,6 @@ if __name__ == '__main__':
     sample = IS_SAMPLE
     st_list = NUM_LIST
 
-    print("Now finding variance in {}..\nHere is your list: \n\t{}".format(file_name, st_list))
-    print("\nHere is your variance: {}".format(Variance.get_variance(st_list, sample=sample)))
+    variance = Variance.get_variance(st_list, sample=sample, print_results=True)
 
+    print(variance)
