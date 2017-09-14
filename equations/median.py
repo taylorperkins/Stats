@@ -6,6 +6,20 @@ from mean import Mean
 
 
 class Median(object):
+    @staticmethod
+    def get_median(st_list, print_results=False):
+        middle_indices = Median.get_middle_indices(st_list)
+
+        middle_ints = list()
+        for ind in middle_indices:
+            middle_ints.append(st_list[ind])
+
+        median = Mean.get_mean(st_list=middle_ints)
+
+        if print_results:
+            return Median.print_results(median)
+
+        return median
 
     @staticmethod
     def get_middle_indices(st_list):
@@ -21,21 +35,18 @@ class Median(object):
         return middle_indices
 
     @staticmethod
-    def get_median(st_list):
-        middle_indices = Median.get_middle_indices(st_list)
+    def print_results(median):
+        result_string = str()
 
-        middle_ints = list()
-        for ind in middle_indices:
-            middle_ints.append(st_list[ind])
+        result_string += "Here is your median: {}".format(median)
 
-        median = Mean.get_mean(st_list=middle_ints)
-
-        return median
+        return result_string
 
 
 if __name__ == '__main__':
     file_name = sys.argv[0]
     st_list = NUM_LIST
 
-    print("Now finding median in {}..\nHere is your list: \n\t{}".format(file_name, st_list))
-    print("\nHere is your median: {}".format(Median.get_median(st_list)))
+    median = Median.get_median(st_list, print_results=True)
+
+    print(median)
