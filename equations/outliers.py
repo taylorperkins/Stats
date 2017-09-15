@@ -2,8 +2,8 @@ import sys
 
 from config import NUM_LIST
 
-from box_plot import BoxPlot
-from iqr import IQR
+from equations.box_plot import BoxPlot
+from equations.iqr import IQR
 
 
 class Outliers(object):
@@ -47,11 +47,11 @@ class Outliers(object):
 
     @staticmethod
     def print_results(outliers):
-        result_string = "Potential Outliers: "
+        result_string = str()
 
         for outlier in outliers:
             if outlier['outliers']:
-                result_string += """Here are your outliers for {}: \n\t{}\n""".format(
+                result_string += """\nHere are your {}: {}\n""".format(
                     outlier['placement'], outlier['outliers'])
 
         return result_string

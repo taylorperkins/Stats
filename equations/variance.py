@@ -1,9 +1,9 @@
 import sys
-from mean import Mean
 
 from config import NUM_LIST, IS_SAMPLE
 
-from utils import to_bool
+from equations.mean import Mean
+from equations.utils import to_bool
 
 
 class Variance(object):

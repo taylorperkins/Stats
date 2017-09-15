@@ -3,7 +3,7 @@ from math import sqrt
 
 from config import NUM_LIST, IS_SAMPLE
 
-from variance import Variance
+from equations.variance import Variance
 
 
 class StandardDeviation(object):    

@@ -2,7 +2,7 @@ import sys
 
 from config import NUM_LIST
 
-from mean import Mean
+from equations.mean import Mean
 
 
 class Median(object):

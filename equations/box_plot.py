@@ -2,7 +2,7 @@ import sys
 
 from config import NUM_LIST
 
-from median import Median
+from equations.median import Median
 
 
 class BoxPlot(object):

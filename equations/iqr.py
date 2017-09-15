@@ -2,8 +2,8 @@ import sys
 
 from config import NUM_LIST
 
-from box_plot import BoxPlot
-from median import Median
+from equations.box_plot import BoxPlot
+from equations.median import Median
 
 
 class IQR(object):
