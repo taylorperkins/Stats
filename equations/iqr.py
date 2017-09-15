@@ -9,7 +9,9 @@ from equations.median import Median
 class IQR(object):
 
     @staticmethod
-    def get_iqr(st_list, print_results=False):
+    def get_iqr(st_list, **kwargs):
+        print_results = kwargs.get('print_results')
+
         box_plot = BoxPlot.get_box_plot(st_list)
 
         iqr = IQR.create_iqr(box_plot)

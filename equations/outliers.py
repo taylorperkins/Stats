@@ -9,7 +9,9 @@ from equations.iqr import IQR
 class Outliers(object):
 
     @staticmethod
-    def get_outliers(st_list, print_results=True):
+    def get_outliers(st_list, **kwargs):
+        print_results = kwargs.get('print_results')
+
         box_plot = BoxPlot.get_box_plot(st_list)
 
         iqr = IQR.create_iqr(box_plot)

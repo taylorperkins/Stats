@@ -8,7 +8,9 @@ from equations.median import Median
 class BoxPlot(object):
 
     @staticmethod
-    def get_box_plot(st_list, print_results=False):
+    def get_box_plot(st_list, **kwargs):
+        print_results = kwargs.get('print_results')
+
         median = Median.get_median(st_list)
 
         middle_indices = Median.get_middle_indices(st_list)

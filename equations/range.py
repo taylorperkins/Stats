@@ -8,7 +8,9 @@ from equations.mean import Mean
 class Range(object):
 
     @staticmethod
-    def get_range(st_list, mid_range=False, print_results=False):
+    def get_range(st_list, **kwargs):
+        mid_range = kwargs.get('mid_range')
+        print_results = kwargs.get('print_results')
 
         start = st_list[0]
         end = st_list[-1]

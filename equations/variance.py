@@ -9,7 +9,10 @@ from equations.utils import to_bool
 class Variance(object):
 
     @staticmethod
-    def get_variance(st_list, sample=False, print_results=False):
+    def get_variance(st_list, **kwargs):
+        sample = kwargs.get('sample')
+        print_results = kwargs.get('print_results')
+
         st_mean = Mean.get_mean(st_list)
 
         squares_list = list()

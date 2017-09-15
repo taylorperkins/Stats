@@ -9,7 +9,10 @@ from equations.variance import Variance
 class StandardDeviation(object):    
 
     @staticmethod
-    def get_standard_deviation(st_list, sample=False, print_results=False):
+    def get_standard_deviation(st_list, **kwargs):
+        sample = kwargs.get('sample')
+        print_results = kwargs.get('print_results')
+
         st_list_sd = sqrt(Variance.get_variance(st_list=st_list, sample=sample))
 
         if print_results:

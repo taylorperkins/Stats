@@ -6,7 +6,9 @@ from config import NUM_LIST
 class Mean(object):
 
     @staticmethod
-    def get_mean(st_list, print_results=False):
+    def get_mean(st_list, **kwargs):
+        print_results = kwargs.get('print_results')
+
         st_mean = sum(st_list) / len(st_list)
 
         if print_results:

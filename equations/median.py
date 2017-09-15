@@ -7,7 +7,9 @@ from equations.mean import Mean
 
 class Median(object):
     @staticmethod
-    def get_median(st_list, print_results=False):
+    def get_median(st_list, **kwargs):
+        print_results = kwargs.get('print_results')
+
         middle_indices = Median.get_middle_indices(st_list)
 
         middle_ints = list()

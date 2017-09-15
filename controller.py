@@ -41,10 +41,10 @@ class Controller(object):
             result = Range.get_range(st_list, mid_range=mid_range, print_results=print_results)
 
         elif equation == 'standard_deviation':
-            result = StandardDeviation.get_standard_deviation(st_list, sample, print_results=print_results)
+            result = StandardDeviation.get_standard_deviation(st_list, sample=sample, print_results=print_results)
 
         elif equation == 'variance':
-            result = Variance.get_variance(st_list, sample, print_results=print_results)
+            result = Variance.get_variance(st_list, sample=sample, print_results=print_results)
 
         else:
             raise ValueError('Nope, can\'t do {}'.format(equation))
