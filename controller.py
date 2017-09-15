@@ -1,10 +1,11 @@
-from config import NUM_LIST, IS_SAMPLE, EQUATION, PRINT_RESULTS
+from config import NUM_LIST, IS_SAMPLE, MID_RANGE, EQUATION, PRINT_RESULTS
 
 from equations.box_plot import BoxPlot
 from equations.iqr import IQR
 from equations.mean import Mean
 from equations.median import Median
 from equations.outliers import Outliers
+from equations.range import Range
 from equations.standard_deviation import StandardDeviation
 from equations.variance import Variance
 
@@ -13,9 +14,9 @@ class Controller(object):
     def __init__(self):
         super(Controller, self).__init__()
 
-        self._equation_set = {'box_plot', 'iqr', 'mean', 'median', 'outliers', 'standard_deviation', 'variance'}
+        self._equation_set = {'box_plot', 'iqr', 'mean', 'median', 'outliers', 'range', 'standard_deviation', 'variance'}
 
-    def solve_equation(self, equation, st_list, sample=False, print_results=False):
+    def solve_equation(self, equation, st_list, sample=False, mid_range=False, print_results=False):
         if equation not in self._equation_set:
             raise ValueError('Equation not available. Please choose from the following list: \n\t{}'.format(
                 self._equation_set
@@ -35,6 +36,9 @@ class Controller(object):
 
         elif equation == 'outliers':
             result = Outliers.get_outliers(st_list, print_results=print_results)
+
+        elif equation == 'range':
+            result = Range.get_range(st_list, mid_range=mid_range, print_results=print_results)
 
         elif equation == 'standard_deviation':
             result = StandardDeviation.get_standard_deviation(st_list, sample, print_results=print_results)
@@ -61,6 +65,7 @@ if __name__ == '__main__':
         equation=EQUATION,
         st_list=NUM_LIST,
         sample=IS_SAMPLE,
+        mid_range=MID_RANGE,
         print_results=PRINT_RESULTS
     )
 
