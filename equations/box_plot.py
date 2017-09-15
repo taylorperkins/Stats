@@ -66,6 +66,6 @@ if __name__ == '__main__':
     file_name = sys.argv[0]
     st_list = NUM_LIST
 
-    box_plot = BoxPlot.get_box_plot(st_list=st_list)
+    box_plot = BoxPlot.get_box_plot(st_list=st_list, print_results=True)
 
-    print(BoxPlot.print_results(box_plot))
+    print(box_plot)

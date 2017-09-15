@@ -9,8 +9,9 @@ Available Methods..
 
 1. Mean
 2. Median
-3. Variance
-4. Standard Deviation
-5. Box Plot
-6. Interquartile Range
-7. Outliers
+3. Range
+4. Variance
+5. Standard Deviation
+6. Box Plot
+7. Interquartile Range
+8. Outliers
