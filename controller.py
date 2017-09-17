@@ -2,6 +2,7 @@ from config import NUM_LIST, IS_SAMPLE, MID_RANGE, EQUATION, PRINT_RESULTS
 
 from equations.box_plot import BoxPlot
 from equations.iqr import IQR
+from equations.mad import MAD
 from equations.mean import Mean
 from equations.median import Median
 from equations.outliers import Outliers
@@ -14,7 +15,8 @@ class Controller(object):
     def __init__(self):
         super(Controller, self).__init__()
 
-        self._equation_set = {'box_plot', 'iqr', 'mean', 'median', 'outliers', 'range', 'standard_deviation', 'variance'}
+        self._equation_set = {'box_plot', 'iqr', 'mad', 'mean', 'median', 'outliers', 'range', 'standard_deviation',
+                              'variance'}
 
     def solve_equation(self, equation, st_list, sample=False, mid_range=False, print_results=False):
         if equation not in self._equation_set:
@@ -27,6 +29,9 @@ class Controller(object):
 
         elif equation == 'iqr':
             result = IQR.get_iqr(st_list, print_results=print_results)
+
+        elif equation =='mad':
+            result = MAD.get_mad(st_list, print_results=print_results)
 
         elif equation =='mean':
             result = Mean.get_mean(st_list, print_results=print_results)

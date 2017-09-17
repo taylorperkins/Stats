@@ -9,7 +9,7 @@ IS_SAMPLE = True
 MID_RANGE = False
 
 # The action you want to perform
-EQUATION = 'variance'
+EQUATION = 'mad'
 
 # Whether or not you want the results to be pretty.
 PRINT_RESULTS = True

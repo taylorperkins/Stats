@@ -15,3 +15,4 @@ Available Methods..
 6. Box Plot
 7. Interquartile Range
 8. Outliers
+9. Mean Absolute Deviation
