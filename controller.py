@@ -24,6 +24,8 @@ class Controller(object):
                 self._equation_set
             ))
 
+        st_list = sorted(st_list, key=int)
+
         if equation == 'box_plot':
             result = BoxPlot.get_box_plot(st_list, print_results=print_results)
 
