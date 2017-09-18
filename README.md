@@ -7,12 +7,13 @@ Set up your dataset within the config.py. Once that is set, run the controller.p
 
 Available Methods..
 
-1. Mean
-2. Median
-3. Range
-4. Variance
-5. Standard Deviation
-6. Box Plot
-7. Interquartile Range
-8. Outliers
-9. Mean Absolute Deviation
+* Box Plot
+* Interquartile Range
+* Mean
+* Mean Absolute Deviation
+* Median
+* Outliers
+* Percentile
+* Range
+* Standard Deviation
+* Variance

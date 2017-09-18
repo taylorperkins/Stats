@@ -1,4 +1,6 @@
-from config import NUM_LIST, IS_SAMPLE, MID_RANGE, EQUATION, PRINT_RESULTS
+from config.args import EQUATION, NUM_LIST
+from config.kwargs import AMOUNT, INCLUDE_AMOUNT, IS_SAMPLE, MID_RANGE, PERCENT, PRINT_RESULTS
+from config.exceptions import NotFoundException
 
 from equations.box_plot import BoxPlot
 from equations.iqr import IQR
@@ -6,6 +8,7 @@ from equations.mad import MAD
 from equations.mean import Mean
 from equations.median import Median
 from equations.outliers import Outliers
+from equations.percentile import Percentile
 from equations.range import Range
 from equations.standard_deviation import StandardDeviation
 from equations.variance import Variance
@@ -15,10 +18,12 @@ class Controller(object):
     def __init__(self):
         super(Controller, self).__init__()
 
-        self._equation_set = {'box_plot', 'iqr', 'mad', 'mean', 'median', 'outliers', 'range', 'standard_deviation',
-                              'variance'}
+        self._equation_set = {'box_plot', 'iqr', 'mad', 'mean', 'median', 'outliers', 'percentile', 'range',
+                              'standard_deviation', 'variance'}
 
-    def solve_equation(self, equation, st_list, sample=False, mid_range=False, print_results=False):
+    def solve_equation(self, equation, st_list, amount=False, include_amount=False, mid_range=False, percent=False,
+                       sample=False, print_results=False):
+
         if equation not in self._equation_set:
             raise ValueError('Equation not available. Please choose from the following list: \n\t{}'.format(
                 self._equation_set
@@ -43,6 +48,10 @@ class Controller(object):
 
         elif equation == 'outliers':
             result = Outliers.get_outliers(st_list, print_results=print_results)
+
+        elif equation == 'percentile':
+            result = Percentile.get_percentile(
+                st_list, amount=amount, include_amount=include_amount, percent=percent, print_results=print_results)
 
         elif equation == 'range':
             result = Range.get_range(st_list, mid_range=mid_range, print_results=print_results)
@@ -71,8 +80,11 @@ if __name__ == '__main__':
     result = controller.solve_equation(
         equation=EQUATION,
         st_list=NUM_LIST,
-        sample=IS_SAMPLE,
+        amount=AMOUNT,
+        include_amount=INCLUDE_AMOUNT,
         mid_range=MID_RANGE,
+        percent=PERCENT,
+        sample=IS_SAMPLE,
         print_results=PRINT_RESULTS
     )
 

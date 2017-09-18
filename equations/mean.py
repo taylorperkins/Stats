@@ -1,6 +1,6 @@
 import sys
 
-from config import NUM_LIST
+from config.args import NUM_LIST
 
 
 class Mean(object):
