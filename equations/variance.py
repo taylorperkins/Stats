@@ -1,6 +1,7 @@
 import sys
 
-from config import NUM_LIST, IS_SAMPLE
+from config.args import NUM_LIST
+from config.kwargs import IS_SAMPLE
 
 from equations.mean import Mean
 from equations.utils import to_bool
