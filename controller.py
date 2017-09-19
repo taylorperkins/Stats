@@ -1,5 +1,5 @@
-from config.args import EQUATION, NUM_LIST
-from config.kwargs import AMOUNT, INCLUDE_AMOUNT, IS_SAMPLE, MID_RANGE, PERCENT, PRINT_RESULTS
+from config.args import EQUATION, NUM_LIST, VALUE, STANDARD_DEVIATION
+from config.kwargs import AMOUNT, INCLUDE_AMOUNT, IS_SAMPLE, MEAN, MID_RANGE, PERCENT, PRINT_RESULTS
 from config.exceptions import NotFoundException
 
 from equations.box_plot import BoxPlot
@@ -12,6 +12,7 @@ from equations.percentile import Percentile
 from equations.range import Range
 from equations.standard_deviation import StandardDeviation
 from equations.variance import Variance
+from equations.z_score import ZScore
 
 
 class Controller(object):
@@ -19,10 +20,11 @@ class Controller(object):
         super(Controller, self).__init__()
 
         self._equation_set = {'box_plot', 'iqr', 'mad', 'mean', 'median', 'outliers', 'percentile', 'range',
-                              'standard_deviation', 'variance'}
+                              'standard_deviation', 'variance', 'z_score'}
 
-    def solve_equation(self, equation, st_list, amount=False, include_amount=False, mid_range=False, percent=False,
-                       sample=False, print_results=False):
+    def solve_equation(self, equation, st_list, amount=False, include_amount=False, mean=False, mid_range=False,
+                       percent=False, sample=False, standard_deviation=False, value=False,
+                       print_results=False):
 
         if equation not in self._equation_set:
             raise ValueError('Equation not available. Please choose from the following list: \n\t{}'.format(
@@ -62,6 +64,9 @@ class Controller(object):
         elif equation == 'variance':
             result = Variance.get_variance(st_list, sample=sample, print_results=print_results)
 
+        elif equation == 'z_score':
+            result = ZScore.get_zscore(st_list, value, standard_deviation, mean=mean, print_results=print_results)
+
         else:
             raise ValueError('Nope, can\'t do {}'.format(equation))
 
@@ -82,9 +87,12 @@ if __name__ == '__main__':
         st_list=NUM_LIST,
         amount=AMOUNT,
         include_amount=INCLUDE_AMOUNT,
+        mean=MEAN,
         mid_range=MID_RANGE,
         percent=PERCENT,
         sample=IS_SAMPLE,
+        standard_deviation=STANDARD_DEVIATION,
+        value=VALUE,
         print_results=PRINT_RESULTS
     )
 
