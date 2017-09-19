@@ -17,3 +17,4 @@ Available Methods..
 * Range
 * Standard Deviation
 * Variance
+* Z-Score

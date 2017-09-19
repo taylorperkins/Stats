@@ -11,3 +11,6 @@ PERCENT = True
 
 # Whether or not you want the results to be pretty.
 PRINT_RESULTS = True
+
+# Z-SCORE
+MEAN = 68
