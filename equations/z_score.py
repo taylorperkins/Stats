@@ -22,7 +22,7 @@ class ZScore(object):
         if print_results:
             return ZScore.print_results(z_score)
 
-        return st_list_sd
+        return z_score
 
     @staticmethod
     def print_results(z_score):

@@ -8,6 +8,7 @@ Set up your dataset within the config.py. Once that is set, run the controller.p
 Available Methods..
 
 * Box Plot
+* Correlation Coefficient
 * Interquartile Range
 * Mean
 * Mean Absolute Deviation
