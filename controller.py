@@ -1,4 +1,4 @@
-from config.args import EQUATION, NUM_LIST, VALUE, STANDARD_DEVIATION
+from config.args import EQUATION, NUM_LIST, VALUE, STANDARD_DEVIATION, XY_DATASET
 from config.kwargs import AMOUNT, INCLUDE_AMOUNT, IS_SAMPLE, MEAN, MID_RANGE, PERCENT, PRINT_RESULTS
 from config.exceptions import NotFoundException
 
@@ -12,6 +12,7 @@ from equations.percentile import Percentile
 from equations.range import Range
 from equations.standard_deviation import StandardDeviation
 from equations.variance import Variance
+from equations.correlation_coefficient import CorrelationCoefficient
 from equations.z_score import ZScore
 
 
@@ -19,10 +20,10 @@ class Controller(object):
     def __init__(self):
         super(Controller, self).__init__()
 
-        self._equation_set = {'box_plot', 'iqr', 'mad', 'mean', 'median', 'outliers', 'percentile', 'range',
-                              'standard_deviation', 'variance', 'z_score'}
+        self._equation_set = {'box_plot', 'correlation_coefficient', 'iqr', 'mad', 'mean', 'median', 'outliers',
+                              'percentile', 'range', 'standard_deviation', 'variance', 'z_score'}
 
-    def solve_equation(self, equation, st_list, amount=False, include_amount=False, mean=False, mid_range=False,
+    def solve_equation(self, equation, st_list, xy_dataset, amount=False, include_amount=False, mean=False, mid_range=False,
                        percent=False, sample=False, standard_deviation=False, value=False,
                        print_results=False):
 
@@ -35,6 +36,10 @@ class Controller(object):
 
         if equation == 'box_plot':
             result = BoxPlot.get_box_plot(st_list, print_results=print_results)
+
+        if equation == 'correlation_coefficient':
+            result = CorrelationCoefficient.get_correlation_coefficient(
+                xy_dataset, print_results=print_results, is_sample=sample)
 
         elif equation == 'iqr':
             result = IQR.get_iqr(st_list, print_results=print_results)
@@ -85,6 +90,7 @@ if __name__ == '__main__':
     result = controller.solve_equation(
         equation=EQUATION,
         st_list=NUM_LIST,
+        xy_dataset=XY_DATASET,
         amount=AMOUNT,
         include_amount=INCLUDE_AMOUNT,
         mean=MEAN,
